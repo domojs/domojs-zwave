@@ -1,0 +1,7 @@
+{
+	"name":"domojs-zwave",
+	"dependencies":{
+		"openzwave":"jperkin/node-openzwave#daae6d1b758f38537c28b07d7b86f35883e9bda3",
+		"serialport":"latest"
+	}
+}
