@@ -42,6 +42,11 @@ ama0.open(function(err){
 
             var nodes={};
             var zwave=require('./scanner.js')('/dev/ttyAMA0', {
+                disconnect:function()
+                {
+                    console.log('disconnected');
+                    console.log(arguments);
+                },
                 nodeAdded:function(nodeId) {
                     nodes[nodeId]= {
                         manufacturer: '',
@@ -56,6 +61,7 @@ ama0.open(function(err){
                         ready: false,
                     };
                },
+               
                 nodeReady:function(nodeid, nodeinfo) {
                     nodes[nodeid].manufacturer = nodeinfo.manufacturer;
                     nodes[nodeid].manufacturerid = nodeinfo.manufacturerid;

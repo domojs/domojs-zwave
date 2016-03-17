@@ -4,6 +4,7 @@ module.exports=function(controllerPath, options)
 {
     var zwave = new OpenZWave(controllerPath, {
         saveconfig: true,
+        consoleoutput:true,
     });
     
     zwave.on('driver ready', function(homeid) {
@@ -37,6 +38,9 @@ module.exports=function(controllerPath, options)
     zwave.on('scan complete', function(){
         console.log('scan completed');
     });
+    
+    if(options.disconnect)
+        zwave.on('disconnect', options.disconnect);
 
     zwave.connect(); 
     
